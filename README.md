@@ -11,20 +11,15 @@ Show and tell: A neural image caption generator, O. Vinyals, A. Toshev, S. Bengi
 
 which requires the steps detailed below.
 
-## 1. Setup Image Encoder:
+## 1. Setup Image Encoder
 
 Here I load pre-trained VGG-16 model with the weights trained on ImageNet. I also get rid of softmax, so I will
 end up with fc2 layer producing 4096 feature encoding for a given image i.
 
 
-## 2. Setup Language Decoder: 
-<!---
-Here I will start with the language decoder model that you used as part of the end-to-end network. You will need to pass image encoding xi as the hidden state input into the rst LSTM cell (i.e., h0 = xi). However, this would only work if the hidden
-state is dimension of the 4096, which is way too high dimensional. In order to get a more reasonably
-dimensional representation you will need to insert a linear layer to project from 4096 ! R300 (note
-that Vinyals paper used 512-dimensional hidden state and image feature projection, so you could also
-use 512 instead of 300, which will likely be a bit better). The remainder of the language decoder,
-including the CrossEntropy loss should remain identical to Assignment 3.
+## 2. Setup Language Decoder 
+
+Here I will start with the language decoder model. I need to pass image encoding as the hidden state input into the first LSTM cell (i.e., h0 = xi). However, this would only work if the hidden state is dimension of the 4096, which is way too high dimensional. In order to get a more reasonably dimensional representation I insert a linear layer to project from 4096 to 300.
 <!---
 3. Training Captioning Encoder-Decoder Architecture. For training the model you can follow the
 training procedure in Assignment 3, by training on (imagei; sentencei) pairs. However, you will want to
