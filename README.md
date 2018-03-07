@@ -11,7 +11,7 @@ Show and tell: A neural image caption generator, O. Vinyals, A. Toshev, S. Bengi
 
 which requires the steps detailed below.
 
-1. Setup Image Encoder:
+## 1. Setup Image Encoder:
 
 Here I load pre-trained VGG-16 model with the weights trained on ImageNet. I also get rid of softmax, so I will
 end up with fc2 layer producing 4096 feature encoding for a given image i.
